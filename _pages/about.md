@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Hello  template for academic personal websites"
+title: "Hello  there"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
