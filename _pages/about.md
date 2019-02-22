@@ -9,7 +9,8 @@ redirect_from:
 ---
 
 I am a phd candidate at the Department of Mathematics, Zhejiang University.
-I do research in Computational Mathematics and Artificial Intelligence. 
+I do research in Computational Mathematics and Artificial Intelligence.
+     
 My main research interests include
 - Numerical Solution of Differential Equations 
 - inverse problem
