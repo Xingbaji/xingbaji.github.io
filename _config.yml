@@ -86,7 +86,7 @@ author:
   location         : "Hangzhou"
   employer         :
   googlescholar    : "http://yourfullgooglescholarurl.com"
-  email            :
+  email            : "756481896@qq.com"
   uri              :
   bitbucket        :
   codepen          :
@@ -100,7 +100,7 @@ author:
   instagram        :
   lastfm           :
   linkedin         :
-  orcid            : "http://orcid.org/yourorcidurl"
+  orcid            :
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
@@ -112,6 +112,7 @@ author:
   xing             :
   youtube          :
   wikipedia        :
+  Linkin           : "https://www.linkedin.com/in/%E6%98%9F-%E6%B2%88-50b0ab92/"
 
 
 # Reading Files
