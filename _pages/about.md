@@ -17,4 +17,3 @@ My main research interests include
 - Deep learning 
 - Natural Language Processing(especially NLU)
 
-Bye.
