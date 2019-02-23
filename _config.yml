@@ -82,8 +82,8 @@ analytics:
 author:
   name             : "沈星"
   avatar           : "profile.png"
-  bio              : "Your biography for the left-hand sidebar"
-  location         : "Location"
+  bio              : "phd candidate at ZJU"
+  location         : "Hangzhou"
   employer         :
   googlescholar    : "http://yourfullgooglescholarurl.com"
   email            :
@@ -94,7 +94,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
+  github           : "https://github.com/Xingbaji"
   google_plus      :
   keybase          :
   instagram        :
@@ -106,9 +106,9 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          :
   vine             :
-  weibo            :
+  weibo            : "https://weibo.com/2776033065/profile?topnav=1&wvr=6"
   xing             :
   youtube          :
   wikipedia        :
