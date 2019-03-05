@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a phd candidate at the Department of Mathematics, Zhejiang University supervised by Prof Xiaoliang Cheng.
+I am a phd candidate at the Department of Mathematics, Zhejiang University under the supervison of Prof Xiaoliang Cheng.
 I do research in Computational Mathematics and Artificial Intelligence.
      
 My main research interests include
