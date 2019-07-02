@@ -11,4 +11,3 @@ location: "HangZhou, Zhejiang"
 线性代数导论课程作业答案(仅供参考)以及作业上交情况
 
 [Download paper here](http://xingbaji.github.io/files/作业上交情况.xlsx)
-[homework3_solution](http://xingbaji.github.io/files/homework_solution_3.pdf)
