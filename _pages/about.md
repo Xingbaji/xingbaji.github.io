@@ -8,10 +8,10 @@ redirect_from:
   - /about.html
 ---
 
-I got my phd degree at the Department of Mathematics, Zhejiang University under the supervison of Prof Xiaoliang Cheng at 2022. 
+I got my phd degree at the Department of Mathematics, Zhejiang University advised by Prof Xiaoliang Cheng in 2022. 
 Now I am working at FUXI AI Lab, Netease. 
 
 My main research interests include
 - Physics Simulation
-- Physics informed neural networks
+- Physics-informed neural networks
 - Instance Segmentation
