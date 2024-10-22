@@ -12,23 +12,13 @@ redirect_from:
 Education
 ======
 - **2012-2016** 厦门大学数学科学学院计算数学系
-- **2016-now** 浙江大学数学科学学院计算数学系
+- **2016-2022** 浙江大学数学科学学院计算数学系
   
-Skills
-======
-* MATLAB
-* Python 
-* deep learning
-  * tensorflow
-  * pytorch 
-  * keras
-* NLP
-  * rasa  
-
 Publications
 ======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
+  <ul>{% for post in site.publications %} Preconditioned Nonlinear Conjugate Gradient Method for
+Real-time Interior-point Hyperelasticity
+    {% include archive-single-cv.html %} test 
   {% endfor %}</ul>
   
 Talks
