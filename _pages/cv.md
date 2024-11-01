@@ -11,14 +11,13 @@ redirect_from:
 
 Education
 ======
-- **2012-2016** 厦门大学数学科学学院计算数学系
-- **2016-2022** 浙江大学数学科学学院计算数学系
+- **2012-2016** Xiamen University, Computational Mathematics
+- **2016-2022** Zhejiang University, Computational Mathematics
   
 Publications
 ======
-  <ul>{% for post in site.publications %} Preconditioned Nonlinear Conjugate Gradient Method for
-Real-time Interior-point Hyperelasticity
-    {% include archive-single-cv.html %} test 
+  <ul>{% for post in site.publications %}
+    {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
 Talks
