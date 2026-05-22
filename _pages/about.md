@@ -29,9 +29,7 @@ rpg:
   menu:
     - { label: "PUBLICATIONS", url: "/publications/" }
     - { label: "CV",           url: "/cv/" }
-    - { label: "TALKS",        url: "/talks/" }
-    - { label: "TEACHING",     url: "/teaching/" }
-    - { label: "CONTACT",      url: "mailto:" }
+    - { label: "CONTACT",      url: "mailto:shenxingsx@zju.edu.cn" }
 ---
 
 I got my PhD degree at the **Department of Mathematics, Zhejiang University**, advised by Prof. Xiaoliang Cheng in 2022.
