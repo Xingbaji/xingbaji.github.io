@@ -1,0 +1,116 @@
+---
+layout: default
+---
+
+<script>document.documentElement.classList.add('rpg-active'); document.body && document.body.classList.add('rpg-active');</script>
+
+<div class="rpg-screen">
+  <div class="rpg-screen__inner">
+
+    {% if page.rpg %}
+      {% assign p = page.rpg %}
+
+      <!-- Top status window: name / class / level -->
+      <section class="rpg-window rpg-window--status">
+        <header class="rpg-window__title">STATUS</header>
+        <div class="rpg-status">
+          <div class="rpg-status__portrait">
+            {% if p.portrait %}
+              <img src="{{ p.portrait | relative_url }}" alt="portrait">
+            {% else %}
+              <div class="rpg-status__portrait-placeholder">?</div>
+            {% endif %}
+          </div>
+          <div class="rpg-status__info">
+            <div class="rpg-status__name">{{ p.name }}</div>
+            <div class="rpg-status__class">CLASS &nbsp;{{ p.job }}</div>
+            <div class="rpg-status__lv">LV &nbsp;<span class="rpg-num">{{ p.level }}</span></div>
+
+            {% if p.hp %}
+              <div class="rpg-bar">
+                <span class="rpg-bar__label">HP</span>
+                <span class="rpg-bar__track"><span class="rpg-bar__fill rpg-bar__fill--hp" style="width: {{ p.hp.percent }}%"></span></span>
+                <span class="rpg-bar__nums">{{ p.hp.cur }}/{{ p.hp.max }}</span>
+              </div>
+            {% endif %}
+            {% if p.mp %}
+              <div class="rpg-bar">
+                <span class="rpg-bar__label">MP</span>
+                <span class="rpg-bar__track"><span class="rpg-bar__fill rpg-bar__fill--mp" style="width: {{ p.mp.percent }}%"></span></span>
+                <span class="rpg-bar__nums">{{ p.mp.cur }}/{{ p.mp.max }}</span>
+              </div>
+            {% endif %}
+            {% if p.exp %}
+              <div class="rpg-bar">
+                <span class="rpg-bar__label">EXP</span>
+                <span class="rpg-bar__track"><span class="rpg-bar__fill rpg-bar__fill--exp" style="width: {{ p.exp.percent }}%"></span></span>
+                <span class="rpg-bar__nums">{{ p.exp.cur }}/{{ p.exp.max }}</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+
+      <!-- Three-column lower row: stats / skills / equipment-menu -->
+      <div class="rpg-row">
+
+        {% if p.stats %}
+        <section class="rpg-window rpg-window--stats">
+          <header class="rpg-window__title">STATS</header>
+          <ul class="rpg-stats">
+            {% for s in p.stats %}
+              <li class="rpg-stats__row rpg-c-{{ s.color | default: 'gold' }}">
+                <span class="rpg-stats__k">{{ s.k }}</span>
+                <span class="rpg-stats__v">{{ s.v }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
+
+        {% if p.skills %}
+        <section class="rpg-window rpg-window--skills">
+          <header class="rpg-window__title">SKILLS</header>
+          <ul class="rpg-skills">
+            {% for sk in p.skills %}
+              <li class="rpg-skills__row rpg-el-{{ sk.element | default: 'neutral' }}">
+                <span class="rpg-skills__icon" aria-hidden="true"></span>
+                <span class="rpg-skills__name">{{ sk.name }}</span>
+                {% if sk.lv %}<span class="rpg-skills__lv">Lv.{{ sk.lv }}</span>{% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
+
+        {% if p.menu %}
+        <section class="rpg-window rpg-window--menu">
+          <header class="rpg-window__title">MENU</header>
+          <ul class="rpg-menu">
+            {% for m in p.menu %}
+              <li><a href="{{ m.url | relative_url }}"><span class="rpg-menu__pointer">▶</span>{{ m.label }}</a></li>
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
+
+      </div>
+
+      <!-- Dialogue / message window: prose content from the markdown body -->
+      <section class="rpg-window rpg-window--dialog">
+        <header class="rpg-window__title">MESSAGE</header>
+        <div class="rpg-dialog">
+          {{ content }}
+          <span class="rpg-dialog__cursor">▼</span>
+        </div>
+      </section>
+
+    {% else %}
+      <!-- Fallback when no rpg data is provided in front matter -->
+      <section class="rpg-window">
+        <div class="rpg-dialog">{{ content }}</div>
+      </section>
+    {% endif %}
+
+  </div>
+</div>

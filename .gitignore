@@ -1,0 +1,11 @@
+_site/
+vendor/
+.bundle/
+Gemfile.lock
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+*.swp
+.DS_Store
+.idea/
+.vscode/

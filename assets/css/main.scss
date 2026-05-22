@@ -37,3 +37,9 @@
 @import "vendor/font-awesome/font-awesome";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
+
+// anime / 二次元 overlay — keep this last so it wins the cascade
+@import "anime";
+
+// retro JRPG home — wins the cascade on .rpg-screen
+@import "rpg";

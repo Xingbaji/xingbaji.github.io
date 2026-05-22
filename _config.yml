@@ -83,7 +83,7 @@ analytics:
 # Site Author
 author:
   name             : "沈星"
-  avatar           : "profile.png"
+  avatar           : "aniya.jpg"
   bio              : "PhD, Algorithm engineer"
   location         : "Hangzhou"
   employer         :
@@ -137,6 +137,7 @@ exclude:
   - CHANGELOG
   - config
   - Gemfile
+  - Gemfile.lock
   - Gruntfile.js
   - gulpfile.js
   - LICENSE
@@ -146,6 +147,7 @@ exclude:
   - Rakefile
   - README
   - tmp
+  - vendor
 keep_files:
   - .git
   - .svn
@@ -179,7 +181,7 @@ collections:
     output: true
     permalink: /:collection/:path/
   publications:
-    output: true
+    output: false
     permalink: /:collection/:path/
   portfolio:
     output: true

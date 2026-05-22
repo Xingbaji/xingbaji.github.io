@@ -1,0 +1,332 @@
+/* ==========================================================================
+   Shinkai 新海诚 cinematic overlay
+   Layered on top of the academicpages defaults.
+   Palette: sky-deep #1e3a72 / sky #4a8bd6 / twilight #6e5aa0 /
+            magenta #c66db5 / sunset #ff8b6b / gold #ffc24d / cream #fff7ec
+   ========================================================================== */
+
+/* ----- page background: cream paper with a slim Shinkai sky strip up top ----- */
+body {
+  background:
+    /* very subtle ground haze */
+    radial-gradient(ellipse 80% 30% at 50% 100%, rgba(110, 90, 160, 0.05) 0%, transparent 70%),
+    /* the iconic Shinkai sky gradient — sits behind the top of the page */
+    linear-gradient(
+      180deg,
+      #1e3a72 0%,
+      #3d6cb0 8%,
+      #7d9ed4 14%,
+      #c4a7c8 18%,
+      #ffb89a 22%,
+      #fdf3e6 28%,
+      #fbf9f4 38%,
+      #fbf9f4 100%
+    );
+  background-attachment: fixed;
+  font-feature-settings: "palt";
+  letter-spacing: 0.02em;
+}
+
+/* static star sparkle layer up in the sky strip */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28vh;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 12% 20%, #fff 0 1px, transparent 1.5px),
+    radial-gradient(circle at 32% 8%,  #fff 0 0.8px, transparent 1.3px),
+    radial-gradient(circle at 58% 14%, #ffe9c2 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 6%,  #fff 0 0.9px, transparent 1.4px),
+    radial-gradient(circle at 90% 22%, #fff 0 1px, transparent 1.5px),
+    radial-gradient(circle at 22% 30%, #fff 0 0.7px, transparent 1.2px),
+    radial-gradient(circle at 68% 26%, #ffe9c2 0 0.8px, transparent 1.3px);
+  background-size:
+    280px 280px, 320px 320px, 360px 360px,
+    240px 240px, 300px 300px, 260px 260px, 340px 340px;
+  background-repeat: repeat;
+  opacity: 0.85;
+}
+
+/* keep real content above decorative layers */
+.masthead,
+.page,
+.page__footer,
+#main { position: relative; z-index: 1; }
+
+/* ----- headings ----- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Klee One", "Noto Serif JP", "Noto Serif SC", "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  font-weight: 600;
+  color: #1e2a48;
+  letter-spacing: 0.02em;
+}
+
+.page__title {
+  background: linear-gradient(90deg, #1e3a72 0%, #6e5aa0 45%, #c66db5 70%, #ff8b6b 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+h2 {
+  position: relative;
+  padding-bottom: 0.35em;
+}
+h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 0.45em;
+  border-radius: 0;
+  background: linear-gradient(90deg, #1e3a72 0%, #c66db5 60%, #ffc24d 100%);
+}
+
+/* ----- masthead: very thin frosted bar over the sky strip ----- */
+.masthead {
+  background: rgba(251, 249, 244, 0.55);
+  -webkit-backdrop-filter: saturate(150%) blur(14px);
+          backdrop-filter: saturate(150%) blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 12px rgba(30, 58, 114, 0.18);
+}
+
+.greedy-nav {
+  background: transparent !important;
+
+  a {
+    color: #1e2a48 !important;
+    font-weight: 500;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
+
+    &:hover {
+      color: #ff8b6b !important;
+      text-shadow: 0 0 12px rgba(255, 139, 107, 0.45);
+    }
+  }
+
+  .visible-links a::before {
+    background: linear-gradient(90deg, #4a8bd6, #ff8b6b) !important;
+    height: 2px !important;
+  }
+}
+
+/* ----- author sidebar: cinematic frame ----- */
+.sidebar {
+  .author__avatar img {
+    border-radius: 50% !important;
+    border: 2px solid #fff;
+    box-shadow:
+      0 0 0 1px rgba(30, 58, 114, 0.25),
+      0 0 28px rgba(255, 194, 77, 0.35),
+      0 12px 28px rgba(30, 58, 114, 0.22);
+    transition: box-shadow 0.5s ease, transform 0.5s ease;
+  }
+  .author__avatar img:hover {
+    transform: scale(1.03);
+    box-shadow:
+      0 0 0 1px rgba(255, 139, 107, 0.5),
+      0 0 36px rgba(255, 139, 107, 0.45),
+      0 14px 32px rgba(30, 58, 114, 0.28);
+  }
+
+  .author__content {
+    text-align: center;
+    margin-top: 0.6em;
+  }
+
+  .author__name {
+    background: linear-gradient(90deg, #1e3a72, #6e5aa0, #ff8b6b);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    font-family: "Klee One", "Noto Serif JP", "Noto Sans JP", sans-serif;
+  }
+
+  .author__bio {
+    color: #4a546b;
+    font-family: "Noto Sans JP", "Noto Sans SC", sans-serif;
+  }
+
+  .btn--inverse {
+    background: linear-gradient(135deg, #4a8bd6 0%, #6e5aa0 55%, #ff8b6b 100%);
+    color: #fff !important;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 14px rgba(30, 58, 114, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    letter-spacing: 0.06em;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(255, 139, 107, 0.4);
+    }
+  }
+
+  .author__urls {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(30, 58, 114, 0.12);
+    border-radius: 6px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 1em;
+
+    li  { color: #2a3147; }
+    a   { color: #1e3a72; transition: color 0.2s ease; }
+    a:hover { color: #ff8b6b; }
+    i   { color: #6e5aa0; }
+  }
+}
+
+/* ----- main content ----- */
+.page {
+  &__content {
+    color: #2a3147;
+
+    h2, h3 { color: #1e2a48; }
+
+    a {
+      color: #1e3a72;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(30, 58, 114, 0.3);
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: #ff8b6b !important;
+        border-bottom-color: #ff8b6b;
+        text-shadow: 0 0 8px rgba(255, 139, 107, 0.25);
+      }
+    }
+
+    blockquote {
+      border-left: 3px solid #6e5aa0;
+      background: linear-gradient(90deg, rgba(110, 90, 160, 0.08), transparent 70%);
+      border-radius: 0;
+      padding: 0.8em 1.2em;
+      color: #3a4054;
+      font-style: italic;
+    }
+
+    code {
+      background: #ecf2fb;
+      color: #1e3a72;
+      border-radius: 4px;
+      padding: 0.1em 0.4em;
+      font-size: 0.92em;
+    }
+
+    pre code {
+      background: transparent;
+      color: inherit;
+    }
+
+    img {
+      border-radius: 6px;
+      box-shadow: 0 6px 22px rgba(30, 58, 114, 0.18);
+    }
+  }
+
+  &__title {
+    font-family: "Klee One", "Noto Serif JP", "Zen Maru Gothic", sans-serif;
+  }
+}
+
+/* simple star bullet for unordered lists (subtle, Shinkai-ish) */
+.page__content ul:not(.author__urls):not(.social-icons):not(.visible-links):not(.hidden-links) > li {
+  list-style: none;
+  position: relative;
+  padding-left: 1.4em;
+
+  &::before {
+    content: "✦";
+    color: #ffc24d;
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    font-size: 0.85em;
+    text-shadow: 0 0 6px rgba(255, 194, 77, 0.5);
+  }
+}
+
+/* archive / publication / talk items ----- cinematic frames ----- */
+.archive__item {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(30, 58, 114, 0.10);
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(180deg, #4a8bd6 0%, #c66db5 60%, #ff8b6b 100%) 1;
+  border-radius: 4px;
+  padding: 1.1em 1.3em;
+  margin-bottom: 1.2em;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 6px 22px rgba(30, 58, 114, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(30, 58, 114, 0.18);
+  }
+
+  &-title {
+    font-family: "Klee One", "Noto Serif JP", sans-serif;
+    color: #1e2a48;
+  }
+}
+
+/* buttons */
+.btn {
+  border-radius: 4px;
+  font-family: "Noto Sans JP", "Noto Sans SC", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover { transform: translateY(-2px); }
+}
+
+/* footer — twilight strip */
+.page__footer {
+  background:
+    linear-gradient(180deg,
+      transparent 0%,
+      rgba(110, 90, 160, 0.08) 40%,
+      rgba(30, 58, 114, 0.12) 100%);
+  border-top: 1px solid rgba(30, 58, 114, 0.15);
+
+  color: #3a4054;
+  a       { color: #1e3a72; }
+  a:hover { color: #ff8b6b; }
+}
+
+.page__footer-copyright {
+  color: #6c7488;
+  font-size: 0.85em;
+}
+
+/* selection */
+::selection {
+  background: rgba(255, 139, 107, 0.4);
+  color: #1e2a48;
+}
+
+/* horizontal rules: thin gradient lines */
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(30, 58, 114, 0.35), transparent);
+  margin: 2em 0;
+}
+
+/* Live2D 看板娘 sits above the footer */
+#live2d-widget,
+.waifu {
+  z-index: 1000 !important;
+}

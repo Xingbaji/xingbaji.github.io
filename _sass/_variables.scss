@@ -12,10 +12,10 @@ $doc-font-size              : 16;
 $paragraph-indent           : false; // true, false (default)
 $indent-var                 : 1.3em;
 
-/* system typefaces */
-$serif                      : Georgia, Times, serif;
-$sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-$monospace                  : Monaco, Consolas, "Lucida Console", monospace;
+/* Shinkai-style typefaces — cinematic, clean, slightly Japanese feel */
+$serif                      : "Klee One", "Noto Serif JP", "Noto Serif SC", Georgia, Times, serif;
+$sans-serif                 : "Zen Maru Gothic", "Noto Sans JP", "Noto Sans SC", "Inter", -apple-system, ".SFNSText-Regular", "San Francisco", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+$monospace                  : "JetBrains Mono", "Fira Code", Monaco, Consolas, "Lucida Console", monospace;
 
 /* sans serif typefaces */
 $sans-serif-narrow          : $sans-serif;
@@ -47,24 +47,35 @@ $type-size-8                : 0.625em;  // ~10px
    Colors
    ========================================================================== */
 
-$gray                       : #7a8288;
+/* Shinkai 新海诚 cinematic palette — sky/twilight/sunset */
+$shinkai-sky-deep           : #1e3a72;   // deep evening sky
+$shinkai-sky                : #4a8bd6;   // clear daytime sky
+$shinkai-sky-light          : #b9dcff;   // sky highlight
+$shinkai-twilight           : #6e5aa0;   // dusk purple
+$shinkai-magenta            : #c66db5;   // magic-hour magenta
+$shinkai-sunset             : #ff8b6b;   // sunset orange
+$shinkai-sunset-soft        : #ffb89a;   // peach
+$shinkai-gold               : #ffc24d;   // sunlight gold
+$shinkai-cream              : #fff7ec;   // warm cream paper
+
+$gray                       : #7c8499;
 $dark-gray                  : mix(#000, $gray, 40%);
 $darker-gray                : mix(#000, $gray, 60%);
-$light-gray                 : mix(#fff, $gray, 50%);
-$lighter-gray               : mix(#fff, $gray, 90%);
+$light-gray                 : mix(#fff, $gray, 55%);
+$lighter-gray               : mix(#fff, $gray, 92%);
 
-$body-color                 : #fff;
-$background-color           : #fff;
-$code-background-color      : #fafafa;
+$body-color                 : #fbf9f4;
+$background-color           : #fbf9f4;
+$code-background-color      : #f3f0e8;
 $code-background-color-dark : $light-gray;
-$text-color                 : $dark-gray;
-$border-color               : $lighter-gray;
+$text-color                 : #2a3147;
+$border-color               : #d9e3f2;
 
-$primary-color              : #7a8288;
-$success-color              : #62c462;
-$warning-color              : #f89406;
-$danger-color               : #ee5f5b;
-$info-color                 : #52adc8;
+$primary-color              : $shinkai-sky;
+$success-color              : #5da985;
+$warning-color              : $shinkai-gold;
+$danger-color               : #d8553b;
+$info-color                 : $shinkai-twilight;
 
 /* brands */
 $behance-color              : #1769FF;
@@ -90,11 +101,11 @@ $xing-color                 : #006567;
 
 
 /* links */
-$link-color                 : $info-color;
-$link-color-hover           : mix(#000, $link-color, 25%);
-$link-color-visited         : mix(#fff, $link-color, 25%);
-$masthead-link-color        : $primary-color;
-$masthead-link-color-hover  : mix(#000, $primary-color, 25%);
+$link-color                 : $shinkai-sky-deep;
+$link-color-hover           : $shinkai-sunset;
+$link-color-visited         : mix($shinkai-twilight, $link-color, 40%);
+$masthead-link-color        : $shinkai-sky-deep;
+$masthead-link-color-hover  : $shinkai-sunset;
 
 
 /*
@@ -146,8 +157,8 @@ $susy: (
    Other
    ========================================================================== */
 
-$border-radius              : 4px;
-$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+$border-radius              : 8px;
+$box-shadow                 : 0 6px 22px rgba(30, 58, 114, 0.10);
 $navicon-width              : 28px;
 $navicon-height             : 4px;
 $global-transition          : all 0.2s ease-in-out;
