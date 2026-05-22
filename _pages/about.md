@@ -16,16 +16,19 @@ rpg:
   mp:  { cur:  80, max: 100, percent:  80 }   # mental bandwidth currently in use
   exp: { cur: 142, max: 365, percent:  39 }   # day-of-year progress toward LV 33
   stats:
-    - { k: "STR", v: 55, color: "red"    }   # desk-job average
-    - { k: "INT", v: 99, color: "blue"   }   # researcher main stat
-    - { k: "DEX", v: 80, color: "green"  }   # coding / typing speed
-    - { k: "WIS", v: 92, color: "purple" }   # PhD-trained judgment
-    - { k: "LCK", v: 55, color: "gold"   }   # rebuttal luck is fickle
+    - { k: "PUB", v:   8, color: "blue"   }   # publications (count of _publications/)
+    - { k: "CIT", v: 173, color: "red"    }   # citations (ResearchGate)
+    - { k: "H-I", v:   4, color: "purple" }   # h-index (ResearchGate)
+    - { k: "★",   v:  79, color: "gold"   }   # GitHub stars (Xingbaji, owner repos)
   skills:
-    - { name: "Numerical Analysis",    lv: 9, element: "earth"     }   # PhD topic — mastery
     - { name: "Physics Simulation",    lv: 7, element: "fire"      }
-    - { name: "Physics-Informed NN",   lv: 6, element: "lightning" }
+    - { name: "Physics AI",            lv: 6, element: "lightning" }
     - { name: "Embodied AI",           lv: 3, element: "ice"       }   # new quest, just unlocked
+    - { name: "Numerical Analysis",    lv: 5, element: "earth"     }   # PhD topic — mastery
+  news:
+    - { date: "2026-04", text: "<strong>SIM1</strong> released — Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds. <a href='/publication/SIM1'>Project page</a>." }
+    - { date: "2026-03", text: "<strong>Tac2Real</strong> on arXiv — reliable GPU visuotactile simulation for online RL & zero-shot real deployment. <a href='/publication/Tac2Real'>Read</a>." }
+    - { date: "2025-12", text: "<strong>Sim2Real-CFM</strong> published in <em>Advanced Intelligent Systems</em>. <a href='/publication/Sim2Real-CFM'>Paper</a>." }
   menu:
     - { label: "PUBLICATIONS", url: "/publications/" }
     - { label: "CV",           url: "/cv/" }
@@ -38,5 +41,5 @@ Now I am a researcher at **Shanghai AI Lab**.
 My main quests:
 
 - Physics Simulation
-- Physics-informed Neural Networks
+- Physics AI
 - Embodied AI

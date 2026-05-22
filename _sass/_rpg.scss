@@ -32,8 +32,13 @@ $sv-stat-purple:   #7c4ec1;
 $sv-stat-gold:     #c98c00;
 
 /* --- Fonts ------------------------------------------------------------- */
+/* Pixel fonts kept for accents (titles, menu, labels, numbers) */
 $sv-pixel-en:      "Pixelify Sans", "VT323", "DotGothic16", monospace;
 $sv-pixel-cjk:     "DotGothic16", "Pixelify Sans", monospace;
+/* Readable body font — handwritten/storybook feel, strong CJK fallbacks */
+$sv-body:          "Klee One", "Zen Maru Gothic", "Noto Sans SC",
+                   "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                   -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
 /* --- Window border mixin ----------------------------------------------- */
 @mixin sv-window($accent: $sv-wood-dk) {
@@ -76,10 +81,10 @@ body.rpg-home-active .page  { padding: 0; float: none; width: 100%; }
       $sv-grass-lt 60%,
       $sv-grass    100%);
   color: $sv-text;
-  font-family: $sv-pixel-cjk;
+  font-family: $sv-body;
   min-height: 100vh;
   padding: 40px 16px 60px;
-  -webkit-font-smoothing: none;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
 
@@ -148,6 +153,8 @@ body.rpg-home-active .page  { padding: 0; float: none; width: 100%; }
   & > .rpg-window__title { background: $sv-sunset; color: $sv-wood-dk; border-color: darken($sv-sunset, 15%); } }
 .rpg-window--dialog  { @include sv-window($sv-water);
   & > .rpg-window__title { background: $sv-water; color: $sv-parchment-lt; border-color: darken($sv-water, 15%); } }
+.rpg-window--news    { @include sv-window($sv-heart);
+  & > .rpg-window__title { background: $sv-heart; color: $sv-parchment-lt; border-color: darken($sv-heart, 15%); } }
 
 /* =========================================================================
    Status window — portrait, name, level, bars
@@ -337,8 +344,8 @@ body.rpg-home-active .page  { padding: 0; float: none; width: 100%; }
    Dialog window — letter/mail aesthetic
    ========================================================================= */
 .rpg-dialog {
-  font-family: $sv-pixel-cjk;
-  font-size: 15px;
+  font-family: $sv-body;
+  font-size: 16px;
   line-height: 1.85;
   color: $sv-text;
   padding-right: 24px;
@@ -386,6 +393,63 @@ body.rpg-home-active .page  { padding: 0; float: none; width: 100%; }
 }
 
 /* =========================================================================
+   News window — quest-board style: date stamp + announcement line
+   ========================================================================= */
+.rpg-news {
+  list-style: none;
+  padding: 0; margin: 0;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 14px;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba($sv-wood-dk, 0.28);
+    font-family: $sv-body;
+    font-size: 15px;
+    line-height: 1.6;
+    color: $sv-text;
+    &:first-child { padding-top: 2px; }
+    &:last-child  { border-bottom: none; padding-bottom: 2px; }
+    /* Pulse the most recent (first) entry's date so the eye lands there */
+    &:first-child .rpg-news__date {
+      background: $sv-heart;
+      color: $sv-parchment-lt;
+      border-color: darken($sv-heart, 18%);
+    }
+  }
+  &__date {
+    font-family: $sv-pixel-en;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: $sv-wood-dk;
+    background: $sv-parchment-dk;
+    padding: 3px 8px;
+    border: 2px solid $sv-wood;
+    border-radius: 3px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  &__text {
+    strong { color: $sv-wood-dk; font-weight: 700; }
+    em     { color: $sv-text-dim; font-style: italic; }
+    a {
+      color: $sv-stat-blue;
+      text-decoration: underline;
+      text-decoration-color: rgba($sv-stat-blue, 0.45);
+      &:hover { color: $sv-heart; text-decoration-color: $sv-heart; }
+    }
+  }
+
+  @media (max-width: 540px) {
+    &__row { grid-template-columns: 1fr; gap: 4px; }
+    &__date { justify-self: start; }
+  }
+}
+
+/* =========================================================================
    GLOBAL inner-page Stardew skin — every page when body.rpg-active is on
    ========================================================================= */
 body.rpg-active:not(.rpg-home-active) {
@@ -397,8 +461,8 @@ body.rpg-active:not(.rpg-home-active) {
       $sv-grass-lt 55%,
       $sv-grass    100%) fixed;
   color: $sv-text;
-  font-family: $sv-pixel-cjk;
-  -webkit-font-smoothing: none;
+  font-family: $sv-body;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 
@@ -524,8 +588,8 @@ body.rpg-active:not(.rpg-home-active) {
 
   /* Body text */
   p, li {
-    font-family: $sv-pixel-cjk;
-    font-size: 15px;
+    font-family: $sv-body;
+    font-size: 16px;
     line-height: 1.85;
     color: $sv-text;
     letter-spacing: 0.01em;

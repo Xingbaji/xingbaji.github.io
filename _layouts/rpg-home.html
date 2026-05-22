@@ -51,6 +51,21 @@ layout: default
         </div>
       </section>
 
+      {% if p.news %}
+      <!-- News window: latest announcements / paper drops -->
+      <section class="rpg-window rpg-window--news">
+        <header class="rpg-window__title">NEWS</header>
+        <ul class="rpg-news">
+          {% for n in p.news %}
+            <li class="rpg-news__row">
+              <span class="rpg-news__date">{{ n.date }}</span>
+              <span class="rpg-news__text">{{ n.text }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
       <!-- Three-column lower row: stats / skills / equipment-menu -->
       <div class="rpg-row">
 
