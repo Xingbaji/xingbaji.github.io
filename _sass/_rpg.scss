@@ -1,341 +1,382 @@
 /* =========================================================================
-   Retro JRPG home — classic FF/DQ window aesthetic, colorful palette
+   Stardew Valley-inspired skin — warm pastoral, parchment & dark-wood frames
+   Class names kept identical to previous JRPG version so layouts/Liquid don't
+   need to change.  All `.rpg-*` selectors below now render the Stardew style.
    ========================================================================= */
 
-$rpg-bg:          #0b0224;             // deep starry violet, not pure black
-$rpg-window-bg:   #0a0a48;             // classic FF blue
-$rpg-text:        #ffffff;
-$rpg-text-dim:    #b4b4ff;
+/* --- Palette ----------------------------------------------------------- */
+$sv-sky-day:       #94c5e8;    // clear sky
+$sv-sky-dawn:      #ffd28a;    // dawn warm
+$sv-sunset:        #ff9a5b;    // sunset orange
+$sv-grass:         #6db74a;    // grass green
+$sv-grass-lt:      #94d36a;    // grass highlight
+$sv-grass-dk:      #3a6f25;    // grass shadow
+$sv-wood:          #8b5a2b;    // medium wood
+$sv-wood-lt:       #b88556;    // light wood
+$sv-wood-dk:       #4a2614;    // dark wood frame
+$sv-wood-darkest:  #2a160a;    // outer shadow
+$sv-parchment:     #f6e6b4;    // cream paper
+$sv-parchment-lt:  #fff3d0;    // brighter highlight
+$sv-parchment-dk:  #e6cf83;    // slightly aged
+$sv-text:          #3a2008;    // dark brown text
+$sv-text-dim:      #6b4a26;    // medium brown text
+$sv-heart:         #d44a4a;    // heart red
+$sv-gold:          #f5b800;    // gold/star yellow
+$sv-energy:        #79c84f;    // energy green
+$sv-water:         #5fb4d8;    // water blue
+$sv-purple:        #a06bd1;    // mage purple
+$sv-stat-red:      #c1462a;
+$sv-stat-blue:     #2a78c1;
+$sv-stat-green:    #4f9c2a;
+$sv-stat-purple:   #7c4ec1;
+$sv-stat-gold:     #c98c00;
 
-/* Per-window accent colors (Earthbound / SaGa-style variety) */
-$rpg-c-status:    #ffd84d;             // gold
-$rpg-c-stats:     #6affb1;             // emerald
-$rpg-c-skills:    #d27bff;             // arcane purple
-$rpg-c-menu:      #ff7e5e;             // ember orange
-$rpg-c-dialog:    #6ee7ff;             // mana cyan
+/* --- Fonts ------------------------------------------------------------- */
+$sv-pixel-en:      "Pixelify Sans", "VT323", "DotGothic16", monospace;
+$sv-pixel-cjk:     "DotGothic16", "Pixelify Sans", monospace;
 
-/* Stat colors */
-$rpg-stat-red:    #ff5d6c;
-$rpg-stat-blue:   #5ec8ff;
-$rpg-stat-green:  #6affb1;
-$rpg-stat-purple: #d27bff;
-$rpg-stat-gold:   #ffd84d;
-
-/* Elements */
-$rpg-el-fire:     #ff6d3a;
-$rpg-el-ice:      #7ad9ff;
-$rpg-el-lightning:#ffe04a;
-$rpg-el-earth:    #b58a4a;
-$rpg-el-water:    #5e9cff;
-$rpg-el-holy:     #fff2a8;
-$rpg-el-dark:     #a06bd1;
-$rpg-el-neutral:  #cfcfcf;
-
-$rpg-hp:          #5ee46a;
-$rpg-mp:          #5ec8ff;
-$rpg-exp:         #ffd84d;
-
-$rpg-pixel-en:    "Press Start 2P", "DotGothic16", monospace;
-$rpg-pixel-cjk:   "DotGothic16", "Press Start 2P", monospace;
-
-/* Window border — accent-driven double border */
-@mixin rpg-window-border($accent) {
-  background: linear-gradient(180deg, $rpg-window-bg 0%, darken($rpg-window-bg, 4%) 100%);
-  border: 2px solid $accent;
+/* --- Window border mixin ----------------------------------------------- */
+@mixin sv-window($accent: $sv-wood-dk) {
+  background: linear-gradient(180deg, $sv-parchment-lt 0%, $sv-parchment 100%);
+  border: 4px solid $accent;
+  border-radius: 6px;
   box-shadow:
-    inset 0 0 0 2px $rpg-window-bg,
-    inset 0 0 0 4px rgba($accent, 0.45),
-    inset 0 0 0 6px $rpg-window-bg,
-    0 0 0 2px #000,
-    0 0 14px rgba($accent, 0.25);
-  border-radius: 0;
+    inset 0 0 0 2px $sv-parchment-dk,
+    inset 0 0 0 4px $sv-wood,
+    inset 0 0 0 6px $sv-parchment-dk,
+    0 4px 0 darken($accent, 10%),
+    0 6px 14px rgba(0, 0, 0, 0.32);
+  color: $sv-text;
 }
 
+/* =========================================================================
+   Home-only chrome hiding (full-screen character sheet)
+   ========================================================================= */
+html.rpg-home-active, body.rpg-home-active {
+  background: $sv-grass;
+}
+body.rpg-home-active .masthead,
+body.rpg-home-active .page__footer,
+body.rpg-home-active .page__hero,
+body.rpg-home-active .author__avatar,
+body.rpg-home-active .author__content,
+body.rpg-home-active .author__urls-wrapper { display: none !important; }
+body.rpg-home-active #main { padding: 0; max-width: none; }
+body.rpg-home-active .page  { padding: 0; float: none; width: 100%; }
+
+/* =========================================================================
+   Full-screen home backdrop — dawn sky into grass field
+   ========================================================================= */
 .rpg-screen {
   background:
-    radial-gradient(ellipse at top, #1c0e4a 0%, $rpg-bg 60%, #000 100%);
-  color: $rpg-text;
-  font-family: $rpg-pixel-cjk;
+    linear-gradient(180deg,
+      $sv-sky-day  0%,
+      $sv-sky-dawn 28%,
+      $sv-sunset   42%,
+      $sv-grass-lt 60%,
+      $sv-grass    100%);
+  color: $sv-text;
+  font-family: $sv-pixel-cjk;
   min-height: 100vh;
-  padding: 32px 16px 64px;
+  padding: 40px 16px 60px;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+
+  /* subtle paper-grain noise on the field */
+  &::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.06) 0 1px, transparent 1px);
+    background-size: 6px 6px;
+    opacity: 0.5;
+  }
 
   &__inner {
     max-width: 960px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 26px;
+    position: relative;
+    z-index: 1;
   }
 
   a {
-    color: $rpg-c-status;
-    text-decoration: none;
-    &:hover { color: #fff; text-shadow: 0 0 6px $rpg-c-status; }
-    &:visited { color: $rpg-c-status; }
+    color: $sv-wood-dk;
+    text-decoration: underline;
+    text-decoration-color: rgba($sv-wood-dk, 0.4);
+    text-underline-offset: 2px;
+    &:hover { color: $sv-heart; text-decoration-color: $sv-heart; }
+    &:visited { color: $sv-wood-dk; }
   }
-
-  p, li { line-height: 1.8; letter-spacing: 0.02em; }
-  strong { color: $rpg-c-status; }
-  em { color: $rpg-text-dim; font-style: normal; }
 }
 
-/* Base window */
+/* =========================================================================
+   Base window — wooden plank frame + parchment paper inside
+   ========================================================================= */
 .rpg-window {
-  @include rpg-window-border($rpg-c-status);
-  padding: 18px 22px 22px;
+  @include sv-window;
+  padding: 22px 26px 24px;
   position: relative;
 
   &__title {
     position: absolute;
-    top: -14px;
-    left: 16px;
-    background: $rpg-bg;
-    padding: 2px 10px;
-    font-family: $rpg-pixel-en;
-    font-size: 10px;
+    top: -16px; left: 18px;
+    background: $sv-wood-dk;
+    color: $sv-parchment;
+    padding: 4px 14px;
+    font-family: $sv-pixel-en;
+    font-size: 12px;
     letter-spacing: 0.18em;
-    color: $rpg-c-status;
-    border: 2px solid $rpg-c-status;
+    border: 2px solid $sv-wood-darkest;
+    border-radius: 4px;
+    box-shadow: 0 2px 0 $sv-wood-darkest;
+    text-transform: uppercase;
   }
 }
 
-/* Per-window theme overrides */
-.rpg-window--status {
-  @include rpg-window-border($rpg-c-status);
-  & > .rpg-window__title {
-    color: $rpg-bg;
-    background: linear-gradient(
-      90deg,
-      #ff5d6c, #ffd84d, #6affb1, #5ec8ff, #d27bff, #ff5d6c
-    );
-    background-size: 200% 100%;
-    animation: rpg-rainbow 6s linear infinite;
-    border-color: #fff;
-  }
-}
-.rpg-window--stats   { @include rpg-window-border($rpg-c-stats);
-  & > .rpg-window__title { color: $rpg-c-stats; border-color: $rpg-c-stats; } }
-.rpg-window--skills  { @include rpg-window-border($rpg-c-skills);
-  & > .rpg-window__title { color: $rpg-c-skills; border-color: $rpg-c-skills; } }
-.rpg-window--menu    { @include rpg-window-border($rpg-c-menu);
-  & > .rpg-window__title { color: $rpg-c-menu; border-color: $rpg-c-menu; } }
-.rpg-window--dialog  { @include rpg-window-border($rpg-c-dialog);
-  & > .rpg-window__title { color: $rpg-c-dialog; border-color: $rpg-c-dialog; } }
+/* Per-window accent — colored wooden frames */
+.rpg-window--status  { @include sv-window($sv-gold);
+  & > .rpg-window__title { background: $sv-gold; color: $sv-wood-dk; border-color: darken($sv-gold, 15%); } }
+.rpg-window--stats   { @include sv-window($sv-stat-green);
+  & > .rpg-window__title { background: $sv-stat-green; color: $sv-parchment-lt; border-color: darken($sv-stat-green, 15%); } }
+.rpg-window--skills  { @include sv-window($sv-stat-purple);
+  & > .rpg-window__title { background: $sv-stat-purple; color: $sv-parchment-lt; border-color: darken($sv-stat-purple, 15%); } }
+.rpg-window--menu    { @include sv-window($sv-sunset);
+  & > .rpg-window__title { background: $sv-sunset; color: $sv-wood-dk; border-color: darken($sv-sunset, 15%); } }
+.rpg-window--dialog  { @include sv-window($sv-water);
+  & > .rpg-window__title { background: $sv-water; color: $sv-parchment-lt; border-color: darken($sv-water, 15%); } }
 
-@keyframes rpg-rainbow {
-  0%   { background-position:   0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
-/* === Status window === */
+/* =========================================================================
+   Status window — portrait, name, level, bars
+   ========================================================================= */
 .rpg-status {
   display: grid;
   grid-template-columns: 96px 1fr;
-  gap: 20px;
+  gap: 22px;
   align-items: center;
 
   &__portrait {
     width: 96px; height: 96px;
-    border: 2px solid #fff;
+    border: 3px solid $sv-wood-dk;
+    border-radius: 6px;
     box-shadow:
-      inset 0 0 0 2px rgba($rpg-c-status, 0.6),
-      0 0 12px rgba($rpg-c-status, 0.4);
-    background: #000;
-    display: flex; align-items: center; justify-content: center;
+      inset 0 0 0 2px $sv-parchment,
+      0 3px 0 darken($sv-wood-dk, 10%);
+    background: $sv-parchment;
     overflow: hidden;
     img { width: 100%; height: 100%; object-fit: cover; }
   }
   &__portrait-placeholder {
-    font-family: $rpg-pixel-en;
+    font-family: $sv-pixel-en;
     font-size: 40px;
-    color: $rpg-c-status;
+    color: $sv-wood-dk;
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
   }
   &__info { display: flex; flex-direction: column; gap: 4px; }
   &__name {
-    font-family: $rpg-pixel-en;
-    font-size: 18px;
-    color: $rpg-c-status;
-    letter-spacing: 0.08em;
+    font-family: $sv-pixel-en;
+    font-size: 22px;
+    font-weight: 700;
+    color: $sv-wood-dk;
+    letter-spacing: 0.04em;
     margin-bottom: 2px;
-    text-shadow: 0 0 8px rgba($rpg-c-status, 0.6);
+    text-shadow: 1px 1px 0 $sv-parchment-lt;
   }
-  &__class, &__lv {
-    font-family: $rpg-pixel-en;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: $rpg-text;
-  }
-  &__class { color: $rpg-c-dialog; }
-  &__lv .rpg-num { color: $rpg-c-status; }
+  &__class { color: $sv-text-dim; font-family: $sv-pixel-en; font-size: 12px; letter-spacing: 0.1em; }
+  &__lv    { color: $sv-text;     font-family: $sv-pixel-en; font-size: 12px; letter-spacing: 0.1em; }
 }
 
 .rpg-num {
-  font-family: $rpg-pixel-en;
-  color: $rpg-c-status;
+  font-family: $sv-pixel-en;
+  font-weight: 700;
+  color: $sv-wood-dk;
 }
 
-/* === HP/MP/EXP bars === */
+/* =========================================================================
+   HP/MP/EXP bars — Stardew-style chunky with dark inner frame
+   ========================================================================= */
 .rpg-bar {
   display: grid;
-  grid-template-columns: 36px 1fr 90px;
+  grid-template-columns: 40px 1fr 90px;
   align-items: center;
-  gap: 8px;
-  margin-top: 4px;
-  font-family: $rpg-pixel-en;
-  font-size: 10px;
+  gap: 10px;
+  margin-top: 5px;
+  font-family: $sv-pixel-en;
+  font-size: 12px;
 
-  &__label  { color: $rpg-c-status; }
+  &__label  { color: $sv-wood-dk; font-weight: 700; }
   &__track  {
-    height: 12px;
-    background: #000;
-    border: 2px solid $rpg-text;
+    height: 14px;
+    background: $sv-wood-dk;
+    border: 2px solid $sv-wood-dk;
+    border-radius: 3px;
     position: relative;
+    box-shadow: inset 0 1px 0 rgba(0,0,0,0.3);
   }
   &__fill   {
     display: block;
     height: 100%;
+    border-radius: 1px;
     transition: width 0.6s ease-out;
-    background-image: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0) 50%);
-    &--hp  { background-color: $rpg-hp;  box-shadow: 0 0 8px rgba($rpg-hp,  0.6); }
-    &--mp  { background-color: $rpg-mp;  box-shadow: 0 0 8px rgba($rpg-mp,  0.6); }
-    &--exp { background-color: $rpg-exp; box-shadow: 0 0 8px rgba($rpg-exp, 0.6); }
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0) 60%);
+    &--hp  { background-color: $sv-heart;  }
+    &--mp  { background-color: $sv-water;  }
+    &--exp { background-color: $sv-gold;   }
   }
-  &__nums   { color: $rpg-text; text-align: right; letter-spacing: 0.05em; }
+  &__nums   { color: $sv-text; text-align: right; }
 }
 
-/* === Three-column row === */
+/* =========================================================================
+   Three-column row
+   ========================================================================= */
 .rpg-row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 22px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
+  gap: 24px;
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
 }
 
-/* === Stats === */
+/* =========================================================================
+   Stats — color-coded value rows
+   ========================================================================= */
 .rpg-stats {
   list-style: none;
   padding: 0; margin: 0;
 
   &__row {
     display: flex; justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px dashed rgba(255,255,255,0.22);
-    font-family: $rpg-pixel-en;
-    font-size: 10px;
-    letter-spacing: 0.1em;
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba($sv-wood-dk, 0.3);
+    font-family: $sv-pixel-en;
+    font-size: 13px;
+    letter-spacing: 0.06em;
     &:last-child { border-bottom: none; }
   }
-  &__k { color: $rpg-text; }
-  &__v { font-family: $rpg-pixel-en; }
+  &__k { color: $sv-text; font-weight: 500; }
+  &__v { font-family: $sv-pixel-en; font-weight: 700; }
 }
 
-/* Color-row rules — match .rpg-c-* on the <li> itself */
-.rpg-stats__row.rpg-c-red    { .rpg-stats__k, .rpg-stats__v { color: $rpg-stat-red;    text-shadow: 0 0 6px rgba($rpg-stat-red,    0.5); } }
-.rpg-stats__row.rpg-c-blue   { .rpg-stats__k, .rpg-stats__v { color: $rpg-stat-blue;   text-shadow: 0 0 6px rgba($rpg-stat-blue,   0.5); } }
-.rpg-stats__row.rpg-c-green  { .rpg-stats__k, .rpg-stats__v { color: $rpg-stat-green;  text-shadow: 0 0 6px rgba($rpg-stat-green,  0.5); } }
-.rpg-stats__row.rpg-c-purple { .rpg-stats__k, .rpg-stats__v { color: $rpg-stat-purple; text-shadow: 0 0 6px rgba($rpg-stat-purple, 0.5); } }
-.rpg-stats__row.rpg-c-gold   { .rpg-stats__k, .rpg-stats__v { color: $rpg-stat-gold;   text-shadow: 0 0 6px rgba($rpg-stat-gold,   0.5); } }
+.rpg-stats__row.rpg-c-red    { .rpg-stats__k, .rpg-stats__v { color: $sv-stat-red;    } }
+.rpg-stats__row.rpg-c-blue   { .rpg-stats__k, .rpg-stats__v { color: $sv-stat-blue;   } }
+.rpg-stats__row.rpg-c-green  { .rpg-stats__k, .rpg-stats__v { color: $sv-stat-green;  } }
+.rpg-stats__row.rpg-c-purple { .rpg-stats__k, .rpg-stats__v { color: $sv-stat-purple; } }
+.rpg-stats__row.rpg-c-gold   { .rpg-stats__k, .rpg-stats__v { color: $sv-stat-gold;   } }
 
-/* === Skills === */
+/* =========================================================================
+   Skills — element icons + level
+   ========================================================================= */
 .rpg-skills {
   list-style: none;
   padding: 0; margin: 0;
 
   &__row {
-    padding: 6px 0;
-    font-size: 13px;
+    padding: 7px 0;
+    font-size: 14px;
     display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px dashed rgba($sv-wood-dk, 0.25);
+    &:last-child { border-bottom: none; }
   }
   &__icon {
     display: inline-block;
-    width: 10px; height: 10px;
-    border: 1px solid #fff;
-    background: $rpg-el-neutral;
-    box-shadow: 0 0 6px currentColor;
+    width: 12px; height: 12px;
+    border: 2px solid $sv-wood-dk;
+    background: $sv-text-dim;
+    border-radius: 2px;
     flex: 0 0 auto;
   }
-  &__name { color: $rpg-text; }
+  &__name { color: $sv-text; font-family: $sv-pixel-en; }
   &__lv {
     margin-left: auto;
-    font-family: $rpg-pixel-en;
-    font-size: 9px;
-    color: $rpg-c-status;
+    font-family: $sv-pixel-en;
+    font-size: 12px;
+    font-weight: 700;
+    color: $sv-stat-gold;
   }
 }
 
-.rpg-el-fire      .rpg-skills__icon { background: $rpg-el-fire;      color: $rpg-el-fire; }
-.rpg-el-ice       .rpg-skills__icon { background: $rpg-el-ice;       color: $rpg-el-ice; }
-.rpg-el-lightning .rpg-skills__icon { background: $rpg-el-lightning; color: $rpg-el-lightning; }
-.rpg-el-earth     .rpg-skills__icon { background: $rpg-el-earth;     color: $rpg-el-earth; }
-.rpg-el-water     .rpg-skills__icon { background: $rpg-el-water;     color: $rpg-el-water; }
-.rpg-el-holy      .rpg-skills__icon { background: $rpg-el-holy;      color: $rpg-el-holy; }
-.rpg-el-dark      .rpg-skills__icon { background: $rpg-el-dark;      color: $rpg-el-dark; }
+.rpg-el-fire      .rpg-skills__icon { background: $sv-sunset; }
+.rpg-el-ice       .rpg-skills__icon { background: $sv-water; }
+.rpg-el-lightning .rpg-skills__icon { background: $sv-gold; }
+.rpg-el-earth     .rpg-skills__icon { background: $sv-wood; }
+.rpg-el-water     .rpg-skills__icon { background: $sv-water; }
+.rpg-el-holy      .rpg-skills__icon { background: $sv-parchment-lt; }
+.rpg-el-dark      .rpg-skills__icon { background: $sv-purple; }
 
-/* === Menu === */
+/* =========================================================================
+   Menu — wooden buttons with star pointer
+   ========================================================================= */
 .rpg-menu {
   list-style: none;
   padding: 0; margin: 0;
 
-  li {
-    padding: 6px 0;
-    font-size: 13px;
-  }
+  li { padding: 6px 0; font-size: 14px; }
   a {
-    display: flex; align-items: center; gap: 8px;
-    color: $rpg-text !important;
+    display: flex; align-items: center; gap: 10px;
+    color: $sv-wood-dk !important;
+    text-decoration: none;
+    font-family: $sv-pixel-en;
+    border: none;
     &:hover {
-      color: $rpg-c-menu !important;
-      text-shadow: 0 0 6px $rpg-c-menu;
-      .rpg-menu__pointer { animation: rpg-blink 0.6s steps(2) infinite; opacity: 1; }
+      color: $sv-heart !important;
+      .rpg-menu__pointer { color: $sv-heart; transform: translateX(2px); }
     }
-    &:visited { color: $rpg-text !important; }
+    &:visited { color: $sv-wood-dk !important; }
   }
-  &__pointer { color: $rpg-c-menu; opacity: 0.6; }
+  &__pointer {
+    color: $sv-stat-gold;
+    font-weight: 700;
+    transition: transform 0.15s ease-out;
+  }
 }
 
-/* === Dialogue window === */
+/* =========================================================================
+   Dialog window — letter/mail aesthetic
+   ========================================================================= */
 .rpg-dialog {
-  font-family: $rpg-pixel-cjk;
-  font-size: 14px;
-  line-height: 1.9;
-  color: $rpg-text;
+  font-family: $sv-pixel-cjk;
+  font-size: 15px;
+  line-height: 1.85;
+  color: $sv-text;
   padding-right: 24px;
   position: relative;
 
   h1, h2, h3 {
-    font-family: $rpg-pixel-en;
-    color: $rpg-c-dialog;
-    letter-spacing: 0.1em;
+    font-family: $sv-pixel-en;
+    color: $sv-wood-dk;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     border: none;
     margin-top: 1.2em;
+    text-shadow: 1px 1px 0 $sv-parchment-lt;
   }
-  h1 { font-size: 16px; }
-  h2 { font-size: 14px; }
-  h3 { font-size: 12px; }
+  h1 { font-size: 20px; }
+  h2 { font-size: 17px; }
+  h3 { font-size: 14px; }
 
   ul { padding-left: 1.4em; }
-  ul li::marker { content: "● "; color: $rpg-c-skills; }
+  ul li::marker { content: "✿ "; color: $sv-heart; }
 
   code {
-    font-family: $rpg-pixel-en;
-    background: #000;
-    color: $rpg-c-stats;
-    padding: 1px 4px;
-    border: 1px solid $rpg-c-stats;
-    font-size: 11px;
+    font-family: $sv-pixel-en;
+    background: $sv-parchment-dk;
+    color: $sv-wood-dk;
+    padding: 1px 6px;
+    border: 1px solid $sv-wood;
+    border-radius: 3px;
+    font-size: 13px;
   }
 
   &__cursor {
     position: absolute;
     bottom: -4px;
     right: 0;
-    color: $rpg-c-dialog;
+    color: $sv-water;
     animation: rpg-blink 0.8s steps(2) infinite;
+    font-size: 18px;
   }
 }
 
@@ -345,317 +386,312 @@ $rpg-pixel-cjk:   "DotGothic16", "Press Start 2P", monospace;
 }
 
 /* =========================================================================
-   RPG home-only chrome hiding (when the full-screen character sheet is shown)
+   GLOBAL inner-page Stardew skin — every page when body.rpg-active is on
    ========================================================================= */
-html.rpg-home-active, body.rpg-home-active {
-  background: $rpg-bg;
-}
-body.rpg-home-active .masthead,
-body.rpg-home-active .page__footer,
-body.rpg-home-active .page__hero,
-body.rpg-home-active .author__avatar,
-body.rpg-home-active .author__content,
-body.rpg-home-active .author__urls-wrapper {
-  display: none !important;
-}
-body.rpg-home-active #main {
-  padding: 0; max-width: none;
-}
-body.rpg-home-active .page {
-  padding: 0; float: none; width: 100%;
-}
-
-/* =========================================================================
-   GLOBAL RPG skin — applies to every page when body.rpg-active is on
-   Inner pages (publications, talks, cv, single posts) all get the JRPG
-   window aesthetic without the full-screen character-sheet layout.
-   ========================================================================= */
-
 body.rpg-active:not(.rpg-home-active) {
   background:
-    radial-gradient(ellipse at top, #1c0e4a 0%, $rpg-bg 60%, #000 100%);
-  color: $rpg-text;
-  font-family: $rpg-pixel-cjk;
+    linear-gradient(180deg,
+      $sv-sky-day  0%,
+      $sv-sky-dawn 25%,
+      $sv-sunset   38%,
+      $sv-grass-lt 55%,
+      $sv-grass    100%) fixed;
+  color: $sv-text;
+  font-family: $sv-pixel-cjk;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 
-  /* Layout reset */
   #main {
     background: transparent;
     max-width: 960px;
-    padding: 28px 16px 48px;
+    padding: 32px 16px 56px;
   }
+  /* Override Susy span() that constrains archive/page to ~83% when sidebar is present */
   .page, .archive {
-    float: none; width: 100%; padding: 0;
+    float: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
-  .sidebar { display: none; }   // author profile sidebar — replaced by masthead
+  .sidebar { display: none !important; }
 
-  /* ----- Masthead → JRPG NAV window ----- */
+  /* ----- Masthead → wooden nav plank ----- */
   .masthead {
     background: transparent;
     border: none;
-    margin: 16px auto 0;
+    margin: 18px auto 0;
     max-width: 960px;
     padding: 0 16px;
   }
-  .masthead__inner-wrap {
-    padding: 0;
-    max-width: none;
-  }
+  .masthead__inner-wrap { padding: 0; max-width: none; }
   .greedy-nav {
-    @include rpg-window-border($rpg-c-status);
-    background: linear-gradient(180deg, $rpg-window-bg 0%, darken($rpg-window-bg, 4%) 100%);
-    padding: 14px 18px;
+    @include sv-window($sv-wood-dk);
+    padding: 16px 22px;
     position: relative;
-    min-height: auto;
-    height: auto;
+    min-height: auto; height: auto;
 
     &::before {
-      content: "NAV";
+      content: "MAP";
       position: absolute;
-      top: -14px; left: 16px;
-      background: $rpg-bg;
-      padding: 2px 10px;
-      font-family: $rpg-pixel-en;
-      font-size: 10px;
+      top: -16px; left: 18px;
+      background: $sv-wood-dk;
+      color: $sv-parchment;
+      padding: 4px 14px;
+      font-family: $sv-pixel-en;
+      font-size: 12px;
       letter-spacing: 0.18em;
-      color: $rpg-c-status;
-      border: 2px solid $rpg-c-status;
+      border: 2px solid $sv-wood-darkest;
+      border-radius: 4px;
+      box-shadow: 0 2px 0 $sv-wood-darkest;
     }
     button { display: none; }
   }
-  .visible-links {
-    display: flex; flex-wrap: wrap;
-    gap: 4px 18px;
+  /* Greedy-nav JS aggressively moves items to .hidden-links when it thinks
+     they don't fit (it misjudges fit after our wood-frame padding).  Force
+     both lists to display inline so every link is visible. */
+  .visible-links,
+  .hidden-links {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 6px 22px;
     list-style: none; padding: 0; margin: 0;
+    position: static !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
+  .hidden-links li { display: list-item !important; }
   .masthead__menu-item {
     margin: 0;
     a {
-      font-family: $rpg-pixel-en;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: $rpg-text !important;
+      font-family: $sv-pixel-en;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      color: $sv-wood-dk !important;
       text-decoration: none;
       padding: 4px 0;
-      &:hover {
-        color: $rpg-c-status !important;
-        text-shadow: 0 0 6px $rpg-c-status;
-      }
-      &::before {
-        content: "▶ ";
-        color: $rpg-c-status;
-      }
+      &:hover { color: $sv-heart !important; }
+      &::before { content: "▸ "; color: $sv-stat-gold; }
     }
-    &--lg a::before {
-      content: "★ ";
-      color: $rpg-c-status;
+    &--lg a {
+      color: $sv-heart !important;
+      font-weight: 700;
+      &::before { content: "★ "; color: $sv-stat-gold; }
     }
-    &--lg a { color: $rpg-c-status !important; }
   }
 
-  /* ----- Page content → JRPG DIALOG window ----- */
+  /* ----- Page content → letter/parchment window ----- */
   .page, .archive {
-    @include rpg-window-border($rpg-c-dialog);
-    padding: 24px 26px 28px;
-    margin-top: 26px;
+    @include sv-window($sv-water);
+    padding: 28px 30px 30px;
+    margin-top: 30px;
     position: relative;
 
     &::before {
       content: attr(data-rpg-title, "PAGE");
       position: absolute;
-      top: -14px; left: 16px;
-      background: $rpg-bg;
-      padding: 2px 10px;
-      font-family: $rpg-pixel-en;
-      font-size: 10px;
+      top: -16px; left: 18px;
+      background: $sv-water;
+      color: $sv-parchment-lt;
+      padding: 4px 14px;
+      font-family: $sv-pixel-en;
+      font-size: 12px;
       letter-spacing: 0.18em;
-      color: $rpg-c-dialog;
-      border: 2px solid $rpg-c-dialog;
+      border: 2px solid darken($sv-water, 15%);
+      border-radius: 4px;
+      box-shadow: 0 2px 0 darken($sv-water, 25%);
     }
   }
   .page__inner-wrap { padding: 0; max-width: none; }
 
   .page__title {
-    font-family: $rpg-pixel-en;
-    color: $rpg-c-status;
-    font-size: 20px;
-    letter-spacing: 0.08em;
+    font-family: $sv-pixel-en;
+    font-weight: 700;
+    color: $sv-wood-dk;
+    font-size: 24px;
+    letter-spacing: 0.03em;
     border: none;
     padding: 0 0 12px;
     margin: 4px 0 18px;
-    text-shadow: 0 0 8px rgba($rpg-c-status, 0.5);
+    text-shadow: 1px 1px 0 $sv-parchment-lt;
 
-    &::before {
-      content: "◆ ";
-      color: $rpg-c-status;
-    }
+    &::before { content: "✿ "; color: $sv-heart; }
   }
 
   /* Body text */
   p, li {
-    font-family: $rpg-pixel-cjk;
-    font-size: 14px;
-    line-height: 1.9;
-    color: $rpg-text;
-    letter-spacing: 0.02em;
+    font-family: $sv-pixel-cjk;
+    font-size: 15px;
+    line-height: 1.85;
+    color: $sv-text;
+    letter-spacing: 0.01em;
   }
-  strong { color: $rpg-c-status; }
-  em { color: $rpg-text-dim; font-style: normal; }
+  strong { color: $sv-wood-dk; font-weight: 700; }
+  em { color: $sv-text-dim; font-style: italic; }
 
   /* Links inside content */
   a {
-    color: $rpg-c-status;
-    text-decoration: none;
-    border-bottom: 1px dotted rgba($rpg-c-status, 0.4);
+    color: $sv-stat-blue;
+    text-decoration: underline;
+    text-decoration-color: rgba($sv-stat-blue, 0.45);
+    text-underline-offset: 2px;
+    border: none;
     &:hover {
-      color: #fff;
-      text-shadow: 0 0 6px $rpg-c-status;
-      border-bottom-color: #fff;
+      color: $sv-heart;
+      text-decoration-color: $sv-heart;
     }
-    &:visited { color: $rpg-c-status; }
+    &:visited { color: $sv-stat-purple; }
   }
 
-  /* Headings inside content */
+  /* Inline headings */
   h1, h2, h3, h4 {
-    font-family: $rpg-pixel-en;
-    color: $rpg-c-skills;
-    letter-spacing: 0.08em;
+    font-family: $sv-pixel-en;
+    font-weight: 700;
+    color: $sv-wood-dk;
+    letter-spacing: 0.04em;
     border: none;
     padding: 0;
     margin-top: 1.4em;
+    text-shadow: 1px 1px 0 $sv-parchment-lt;
   }
-  h1 { font-size: 18px; }
-  h2 { font-size: 15px; }
-  h3 { font-size: 13px; }
-  h4 { font-size: 11px; }
+  h1 { font-size: 22px; }
+  h2 { font-size: 18px; color: $sv-stat-purple; }
+  h3 { font-size: 15px; }
+  h4 { font-size: 13px; }
 
-  /* Code blocks */
   code {
-    font-family: $rpg-pixel-en;
-    background: #000;
-    color: $rpg-c-stats;
-    padding: 1px 4px;
-    border: 1px solid $rpg-c-stats;
-    font-size: 11px;
+    font-family: $sv-pixel-en;
+    background: $sv-parchment-dk;
+    color: $sv-wood-dk;
+    padding: 1px 6px;
+    border: 1px solid $sv-wood;
+    border-radius: 3px;
+    font-size: 13px;
   }
   pre, pre code {
-    background: #000;
-    border: 2px solid rgba($rpg-c-dialog, 0.5);
-    color: $rpg-text;
+    background: $sv-parchment-dk;
+    border: 2px solid $sv-wood;
+    border-radius: 4px;
+    color: $sv-wood-dk;
   }
 
-  /* ----- Archive items → JRPG MENU rows ----- */
+  /* ----- Archive items → quest log entries ----- */
   .archive__item {
-    border: 2px solid rgba($rpg-c-skills, 0.4);
-    background: rgba(#000, 0.35);
-    padding: 14px 16px;
-    margin-bottom: 14px;
+    border: 3px solid $sv-wood-dk;
+    border-radius: 5px;
+    background: linear-gradient(180deg, $sv-parchment-lt 0%, $sv-parchment 100%);
+    padding: 16px 18px 16px 26px;
+    margin-bottom: 16px;
     position: relative;
+    box-shadow:
+      inset 0 0 0 2px $sv-parchment-dk,
+      0 3px 0 darken($sv-wood-dk, 8%);
 
     &::before {
-      content: "▶";
+      content: "✦";
       position: absolute;
-      left: -2px; top: 14px;
-      background: $rpg-bg;
-      color: $rpg-c-skills;
-      padding: 0 4px;
-      font-family: $rpg-pixel-en;
-      font-size: 10px;
+      left: 8px; top: 14px;
+      color: $sv-stat-gold;
+      font-family: $sv-pixel-en;
+      font-size: 14px;
+      text-shadow: 1px 1px 0 $sv-wood-dk;
     }
-
     &:hover {
-      border-color: $rpg-c-status;
-      box-shadow: 0 0 12px rgba($rpg-c-status, 0.35);
-      &::before { color: $rpg-c-status; }
+      border-color: $sv-heart;
+      &::before { color: $sv-heart; }
     }
   }
   .archive__item-title {
-    font-family: $rpg-pixel-en;
-    font-size: 12px;
-    line-height: 1.5;
-    color: $rpg-c-status;
-    letter-spacing: 0.04em;
+    font-family: $sv-pixel-en;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $sv-wood-dk;
+    letter-spacing: 0.02em;
     border: none;
-    padding: 0 0 6px 18px;
+    padding: 0 0 6px 0;
     margin: 0 0 8px;
     a {
-      color: $rpg-c-status;
-      border-bottom: none;
-      &:hover { color: #fff; text-shadow: 0 0 6px $rpg-c-status; }
+      color: $sv-wood-dk;
+      text-decoration: none;
+      &:hover { color: $sv-heart; text-decoration: underline; }
     }
   }
   .archive__item-excerpt {
-    margin: 6px 0 0 18px;
-    padding-left: 8px;
-    border-left: 2px solid rgba($rpg-c-dialog, 0.4);
-    font-size: 12px;
-    color: $rpg-text-dim;
-    p { font-size: 12px; line-height: 1.7; }
+    margin: 6px 0 0 0;
+    padding-left: 12px;
+    border-left: 3px solid $sv-water;
+    font-size: 13px;
+    color: $sv-text-dim;
+    p { font-size: 13px; line-height: 1.7; }
   }
   .archive__item .page__meta,
   .archive__item .page__date,
   .archive__item > article > p {
-    font-family: $rpg-pixel-en;
-    font-size: 10px;
-    color: $rpg-c-stats;
-    margin-left: 18px;
-    letter-spacing: 0.05em;
+    font-family: $sv-pixel-en;
+    font-size: 12px;
+    color: $sv-stat-green;
+    font-weight: 500;
+    letter-spacing: 0.04em;
   }
-  .archive__item .fa { color: $rpg-c-stats; }
+  .archive__item .fa { color: $sv-stat-green; }
 
-  /* Page-level meta (date, etc on single posts) */
+  /* Page-level meta */
   .page__meta, .page__date {
-    font-family: $rpg-pixel-en;
-    font-size: 10px;
-    color: $rpg-c-stats;
-    letter-spacing: 0.05em;
+    font-family: $sv-pixel-en;
+    font-size: 12px;
+    color: $sv-text-dim;
+    letter-spacing: 0.04em;
   }
 
-  /* ----- Footer → JRPG bottom bar ----- */
+  /* ----- Footer → small wood plank ----- */
   .page__footer {
     background: transparent;
-    color: $rpg-text-dim;
+    color: $sv-text;
     border: none;
-    margin: 30px auto 16px;
+    margin: 32px auto 18px;
     max-width: 960px;
     padding: 0 16px;
 
     footer {
-      @include rpg-window-border($rpg-c-menu);
-      padding: 14px 18px;
-      font-family: $rpg-pixel-en;
-      font-size: 10px;
-      letter-spacing: 0.05em;
+      @include sv-window($sv-sunset);
+      padding: 16px 22px;
+      font-family: $sv-pixel-en;
+      font-size: 12px;
+      letter-spacing: 0.04em;
       text-align: center;
       a {
-        color: $rpg-c-menu;
-        border: none;
-        &:hover { color: #fff; text-shadow: 0 0 6px $rpg-c-menu; }
+        color: $sv-wood-dk;
+        text-decoration: underline;
+        text-decoration-color: rgba($sv-wood-dk, 0.4);
+        &:hover { color: $sv-heart; text-decoration-color: $sv-heart; }
       }
     }
   }
   .page__footer-copyright {
-    margin-top: 8px;
-    color: $rpg-text-dim;
-    font-size: 9px;
+    margin-top: 10px;
+    color: $sv-text-dim;
+    font-size: 11px;
   }
   .page__footer-follow .social-icons {
-    list-style: none;
-    padding: 0; margin: 0;
-    display: flex; justify-content: center; gap: 16px;
+    list-style: none; padding: 0; margin: 0;
+    display: flex; justify-content: center; gap: 18px;
     li { display: inline-block; }
   }
 
-  /* Lists inside content windows */
-  ul li::marker { content: "● "; color: $rpg-c-skills; }
+  /* Lists & quotes */
+  ul li::marker { content: "✿ "; color: $sv-heart; }
   blockquote {
-    border-left: 4px solid $rpg-c-dialog;
-    background: rgba(#000, 0.3);
-    color: $rpg-text-dim;
-    padding: 8px 14px;
-    margin: 12px 0;
+    border-left: 4px solid $sv-stat-purple;
+    background: $sv-parchment-dk;
+    color: $sv-text;
+    padding: 10px 14px;
+    margin: 14px 0;
+    border-radius: 0 4px 4px 0;
   }
 
   /* Structured key/value list (contact page etc.) */
@@ -663,45 +699,56 @@ body.rpg-active:not(.rpg-home-active) {
     display: grid;
     grid-template-columns: max-content 1fr;
     column-gap: 22px;
-    row-gap: 8px;
+    row-gap: 10px;
     margin: 14px 0 18px;
 
     dt {
-      font-family: $rpg-pixel-en;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      color: $rpg-c-status;
+      font-family: $sv-pixel-en;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: $sv-wood-dk;
       text-transform: uppercase;
       padding-top: 4px;
+      text-shadow: 1px 1px 0 $sv-parchment-lt;
     }
     dd {
       margin: 0;
-      font-size: 13px;
-      color: $rpg-text;
+      font-size: 14px;
+      color: $sv-text;
       padding-top: 2px;
-      a { color: $rpg-c-dialog; border-bottom: 1px dotted rgba($rpg-c-dialog, 0.5); }
-      a:hover { color: #fff; text-shadow: 0 0 6px $rpg-c-dialog; }
+      a {
+        color: $sv-stat-blue;
+        text-decoration: underline;
+        text-decoration-color: rgba($sv-stat-blue, 0.45);
+      }
+      a:hover { color: $sv-heart; text-decoration-color: $sv-heart; }
     }
   }
 
-  /* Previous/Next pagination buttons on single posts/talks */
+  /* Previous/Next pagination */
   .pagination, .post-pagination, .pagination--pager, nav.pagination {
-    display: flex; gap: 12px; margin-top: 18px;
+    display: flex; gap: 14px; margin-top: 20px;
     a, .pagination__next-page, .pagination__previous-page {
       flex: 1;
       display: block;
       text-align: center;
-      padding: 8px 12px;
-      font-family: $rpg-pixel-en;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      color: $rpg-c-menu !important;
-      background: rgba(#000, 0.4);
-      border: 2px solid $rpg-c-menu;
-      box-shadow: inset 0 0 0 2px $rpg-window-bg, inset 0 0 0 4px rgba($rpg-c-menu, 0.4);
+      padding: 10px 14px;
+      font-family: $sv-pixel-en;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: $sv-wood-dk !important;
+      background: $sv-parchment-lt;
+      border: 3px solid $sv-wood-dk;
+      border-radius: 4px;
+      box-shadow:
+        inset 0 0 0 2px $sv-parchment-dk,
+        0 3px 0 darken($sv-wood-dk, 10%);
+      text-decoration: none;
       &:hover {
-        color: #fff !important;
-        text-shadow: 0 0 6px $rpg-c-menu;
+        color: $sv-heart !important;
+        background: $sv-parchment;
       }
     }
   }
