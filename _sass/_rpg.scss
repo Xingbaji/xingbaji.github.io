@@ -658,6 +658,32 @@ body.rpg-active:not(.rpg-home-active) {
     margin: 12px 0;
   }
 
+  /* Structured key/value list (contact page etc.) */
+  .rpg-info {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 22px;
+    row-gap: 8px;
+    margin: 14px 0 18px;
+
+    dt {
+      font-family: $rpg-pixel-en;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: $rpg-c-status;
+      text-transform: uppercase;
+      padding-top: 4px;
+    }
+    dd {
+      margin: 0;
+      font-size: 13px;
+      color: $rpg-text;
+      padding-top: 2px;
+      a { color: $rpg-c-dialog; border-bottom: 1px dotted rgba($rpg-c-dialog, 0.5); }
+      a:hover { color: #fff; text-shadow: 0 0 6px $rpg-c-dialog; }
+    }
+  }
+
   /* Previous/Next pagination buttons on single posts/talks */
   .pagination, .post-pagination, .pagination--pager, nav.pagination {
     display: flex; gap: 12px; margin-top: 18px;
