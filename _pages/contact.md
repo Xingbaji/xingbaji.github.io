@@ -12,7 +12,7 @@ Drop me a line — email is the fastest channel.
 <dl class="rpg-info">
   <dt>Name</dt>         <dd>沈星 (Xing Shen)</dd>
   <dt>Email</dt>        <dd><a href="mailto:shenxingsx@zju.edu.cn">shenxingsx@zju.edu.cn</a></dd>
-  <dt>Affiliation</dt>  <dd>Researcher at <strong>RealSim2Real</strong></dd>
+  <dt>Affiliation</dt>  <dd>Researcher at <strong>Shanghai AI Lab</strong></dd>
   <dt>Alma mater</dt>   <dd>PhD, Department of Mathematics, Zhejiang University (2022)</dd>
 </dl>
 

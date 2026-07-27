@@ -38,7 +38,7 @@ rpg:
 ---
 
 I got my PhD degree at the **Department of Mathematics, Zhejiang University**, advised by Prof. Xiaoliang Cheng in 2022.
-Now I am a researcher at **RealSim2Real**.
+Now I am a researcher at **Shanghai AI Lab**.
 
 My main quests:
 
