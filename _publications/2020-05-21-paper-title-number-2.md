@@ -12,6 +12,8 @@ Furthermore, the error bound and stability of DEM is discussed.'
 date: 2020-05-21
 venue: 'Arxiv'
 paperurl: 'http://xingbaji.github.io/files/DeepEuler.pdf'
+header:
+  teaser: publications/deep-euler.webp
 ---
 This paper is about the number 2. The number 3 is left for future work.
 

@@ -7,6 +7,8 @@ Focusing on a static frictionless unilateral contact problem, we derive its weak
 date: 2022-09-01
 venue: 'Journal of Nonlinear & Variational Analysis'
 paperurl: 'http://xingbaji.github.io/files/JNVA2022-5-4.pdf'
+header:
+  teaser: publications/contact-problem.webp
 ---
 
 [Download paper here](http://xingbaji.github.io/files/JNVA2022-5-4.pdf)

@@ -7,5 +7,7 @@ excerpt: 'The linear conjugate gradient method is widely used in physical simula
 date: 2024-07-13
 venue: 'Siggraph 2024 Conference Paper'
 paperurl: 'https://xingbaji.github.io/PNCG_project_page/'
+header:
+  teaser: publications/pncg.webp
 ---
 [Download paper here](http://xingbaji.github.io/files/PNCG_offcial.pdf)

@@ -6,6 +6,8 @@ excerpt: 'This paper addresses the Sim2Real gap in soft robotics through conditi
 date: 2025-12-10
 venue: 'Advanced Intelligent Systems'
 paperurl: 'https://advanced.onlinelibrary.wiley.com/doi/10.1002/aisy.202500690'
+header:
+  teaser: publications/sim2real-cfm.webp
 ---
 
 [Read paper here](https://advanced.onlinelibrary.wiley.com/doi/10.1002/aisy.202500690)

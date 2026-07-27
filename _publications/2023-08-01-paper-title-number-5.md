@@ -6,6 +6,8 @@ excerpt: 'In this paper, we propose a method based on deep neural networks to so
 date: 2023-08-01
 venue: 'Nonlinear Analysis: Real World Applications'
 paperurl: 'http://xingbaji.github.io/files/nn_obstacle.pdf'
+header:
+  teaser: publications/obstacle-problem.webp
 ---
 
 [Download paper here](http://xingbaji.github.io/files/nn_obstacle.pdf)

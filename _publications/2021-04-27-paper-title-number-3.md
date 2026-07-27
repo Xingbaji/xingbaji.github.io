@@ -6,6 +6,8 @@ excerpt: 'Binary grid mask representation is broadly used in instance segmentati
 date: 2021-04-27
 venue: 'CVPR2021(oral)'
 paperurl: 'https://github.com/aliyun/DCT-Mask'
+header:
+  teaser: publications/dct-mask.webp
 ---
 
 [Download paper here](http://xingbaji.github.io/files/DCT_Mask.pdf)
