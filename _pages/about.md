@@ -22,10 +22,11 @@ rpg:
     - { k: "★",   v:  79, color: "gold"   }   # GitHub stars (Xingbaji, owner repos)
   skills:
     - { name: "Physics Simulation",    lv: 7, element: "fire"      }
-    - { name: "Physics AI",            lv: 6, element: "lightning" }
+    - { name: "Physical AI",           lv: 6, element: "lightning" }
     - { name: "Embodied AI",           lv: 3, element: "ice"       }   # new quest, just unlocked
     - { name: "Numerical Analysis",    lv: 5, element: "earth"     }   # PhD topic — mastery
   news:
+    - { date: "2026-06", text: "<strong>SIM1</strong> and <strong>Tac2Real</strong> accepted to <strong>ECCV 2026</strong>! <a href='/publication/SIM1'>SIM1</a> · <a href='/publication/Tac2Real'>Tac2Real</a>." }
     - { date: "2026-04", text: "<strong>MAS-PNCG</strong> on arXiv — Multilevel Preconditioned NCG for IPC, up to 5.66× speedup. <em>Preliminary version; an optimized release with substantially better performance is coming soon.</em> <a href='/publication/MAS-PNCG'>Read</a>." }
     - { date: "2026-04", text: "<strong>SIM1</strong> released — Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds. <a href='/publication/SIM1'>Project page</a>." }
     - { date: "2026-03", text: "<strong>Tac2Real</strong> on arXiv — reliable GPU visuotactile simulation for online RL & zero-shot real deployment. <a href='/publication/Tac2Real'>Read</a>." }
@@ -42,5 +43,5 @@ Now I am a researcher at **Shanghai AI Lab**.
 My main quests:
 
 - Physics Simulation
-- Physics AI
+- Physical AI
 - Embodied AI

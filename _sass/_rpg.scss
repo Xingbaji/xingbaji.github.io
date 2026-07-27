@@ -685,6 +685,22 @@ body.rpg-active:not(.rpg-home-active) {
       &:hover { color: $sv-heart; text-decoration: underline; }
     }
   }
+
+  /* Long paper titles need a high-legibility face instead of pixel lettering. */
+  .publication__item .archive__item-title,
+  .publication__page .page__title {
+    font-family: "Inter", "Noto Sans JP", "Noto Sans SC",
+                 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-shadow: none;
+  }
+
+  .publication__item .archive__item-title {
+    font-size: 17px;
+  }
+
   .archive__item-excerpt {
     margin: 6px 0 0 0;
     padding-left: 12px;
