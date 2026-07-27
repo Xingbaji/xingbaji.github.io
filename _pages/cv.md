@@ -16,7 +16,7 @@ Education
 
 Experience
 ======
-- **2025-Present** **Shanghai AI Laboratory**, Researcher — Physics Simulation / Embodied AI / Sim2Real
+- **2025-Present** **RealSim2Real**, Researcher — Physics Simulation / Embodied AI / Sim2Real
   - Developed **SIM1**, a physics-aligned simulator for deformable manipulation that scales 200 human demonstrations into over 10,000 synthetic trajectories; policies trained entirely on synthetic data achieve **90% zero-shot success** on real robots.
   - Developed **Tac2Real**, a reliable multi-GPU visuotactile simulation framework with **TacAlign** for online reinforcement learning, enabling zero-shot Sim2Real transfer on robotic peg insertion.
   - Researched soft-robotic **Sim2Real via conditional flow matching**, reducing the simulation-to-reality gap on tensile and fin-ray gripping benchmarks.
