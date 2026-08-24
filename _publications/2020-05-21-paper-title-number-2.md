@@ -1,7 +1,7 @@
 ---
 title: "Deep Euler method: solving ODEs by approximating the local truncation error of the Euler method"
 collection: publications
-permalink: /publication/DeepEuler
+permalink: /publication/DeepEuler/
 excerpt: 'In this paper, we propose a deep learning-based method, deep Euler method (DEM) to solve
 ordinary differential equations. DEM significantly improves the accuracy of the Euler method
 by approximating the local truncation error with deep neural networks which could obtain a high
@@ -11,10 +11,10 @@ with other schemes of numerical methods, such as Runge-Kutta method to obtain be
 Furthermore, the error bound and stability of DEM is discussed.'
 date: 2020-05-21
 venue: 'Arxiv'
-paperurl: 'http://xingbaji.github.io/files/DeepEuler.pdf'
+paperurl: '/files/DeepEuler.pdf'
 header:
   teaser: publications/deep-euler.webp
 ---
 This paper is about the number 2. The number 3 is left for future work.
 
-[Download paper here](http://xingbaji.github.io/files/DeepEuler.pdf)
+[Download paper here](/files/DeepEuler.pdf)
