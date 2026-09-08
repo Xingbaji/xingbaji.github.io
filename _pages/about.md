@@ -16,7 +16,7 @@ rpg:
   mp:  { cur:  80, max: 100, percent:  80 }   # mental bandwidth currently in use
   exp: { cur: 142, max: 365, percent:  39 }   # day-of-year progress toward LV 33
   stats:
-    - { k: "PUB", v:  10, color: "blue"   }   # publications (count of _publications/)
+    - { k: "PUB", v:  11, color: "blue"   }   # publications (count of _publications/)
     - { k: "CIT", v: 173, color: "red"    }   # citations (ResearchGate)
     - { k: "H-I", v:   4, color: "purple" }   # h-index (ResearchGate)
     - { k: "★",   v:  79, color: "gold"   }   # GitHub stars (Xingbaji, owner repos)
@@ -27,6 +27,7 @@ rpg:
     - { name: "Numerical Analysis",    lv: 5, element: "earth"     }   # PhD topic — mastery
   news:
     - { date: "2026-08", text: "<strong>GAUGE</strong> released — a measurement-grounded benchmark for physical fidelity in simulation engines and video world models. <a href='/publication/GAUGE/'>Project page</a>." }
+    - { date: "2026-07", text: "<strong>A Definition and Roadmap for World Models</strong> released — a perspective on the foundations, technical landscape, and development path of world models. <a href='/publication/World-Models/'>Read</a>." }
     - { date: "2026-06", text: "<strong>SIM1</strong> and <strong>Tac2Real</strong> accepted to <strong>ECCV 2026</strong>! <a href='/publication/SIM1/'>SIM1</a> · <a href='/publication/Tac2Real/'>Tac2Real</a>." }
     - { date: "2026-04", text: "<strong>MAS-PNCG</strong> on arXiv — Multilevel Preconditioned NCG for IPC, up to 5.66× speedup. <em>Preliminary version; an optimized release with substantially better performance is coming soon.</em> <a href='/publication/MAS-PNCG/'>Read</a>." }
     - { date: "2026-04", text: "<strong>SIM1</strong> released — Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds. <a href='/publication/SIM1/'>Project page</a>." }
