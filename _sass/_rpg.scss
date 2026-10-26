@@ -35,6 +35,8 @@ $sv-stat-gold:     #c98c00;
 /* Pixel fonts kept for accents (titles, menu, labels, numbers) */
 $sv-pixel-en:      "Pixelify Sans", "VT323", "DotGothic16", monospace;
 $sv-pixel-cjk:     "DotGothic16", "Pixelify Sans", monospace;
+/* Numbers & small labels — Pixelify is illegible at 12px (0/8, 2/3, 5/6 merge) */
+$sv-pixel-num:     "VT323", "Pixelify Sans", monospace;
 /* Readable body font — handwritten/storybook feel, strong CJK fallbacks */
 $sv-body:          "Klee One", "Zen Maru Gothic", "Noto Sans SC",
                    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
@@ -193,12 +195,12 @@ body.rpg-home-active .page  { padding: 0; float: none; width: 100%; }
     margin-bottom: 2px;
     text-shadow: 1px 1px 0 $sv-parchment-lt;
   }
-  &__class { color: $sv-text-dim; font-family: $sv-pixel-en; font-size: 12px; letter-spacing: 0.1em; }
-  &__lv    { color: $sv-text;     font-family: $sv-pixel-en; font-size: 12px; letter-spacing: 0.1em; }
+  &__class { color: $sv-text-dim; font-family: $sv-pixel-num; font-size: 18px; letter-spacing: 0.1em; }
+  &__lv    { color: $sv-text;     font-family: $sv-pixel-num; font-size: 18px; letter-spacing: 0.1em; }
 }
 
 .rpg-num {
-  font-family: $sv-pixel-en;
+  font-family: $sv-pixel-num;
   font-weight: 700;
   color: $sv-wood-dk;
 }
@@ -234,7 +236,7 @@ body.rpg-home-active .page  { padding: 0; float: none; width: 100%; }
     &--mp  { background-color: $sv-water;  }
     &--exp { background-color: $sv-gold;   }
   }
-  &__nums   { color: $sv-text; text-align: right; }
+  &__nums   { color: $sv-text; text-align: right; font-family: $sv-pixel-num; font-size: 18px; }
 }
 
 /* =========================================================================
@@ -258,13 +260,13 @@ body.rpg-home-active .page  { padding: 0; float: none; width: 100%; }
     display: flex; justify-content: space-between;
     padding: 6px 0;
     border-bottom: 1px dashed rgba($sv-wood-dk, 0.3);
-    font-family: $sv-pixel-en;
-    font-size: 13px;
+    font-family: $sv-pixel-num;
+    font-size: 18px;
     letter-spacing: 0.06em;
     &:last-child { border-bottom: none; }
   }
   &__k { color: $sv-text; font-weight: 500; }
-  &__v { font-family: $sv-pixel-en; font-weight: 700; }
+  &__v { font-family: $sv-pixel-num; font-weight: 700; }
 }
 
 .rpg-stats__row.rpg-c-red    { .rpg-stats__k, .rpg-stats__v { color: $sv-stat-red;    } }
@@ -298,8 +300,8 @@ body.rpg-home-active .page  { padding: 0; float: none; width: 100%; }
   &__name { color: $sv-text; font-family: $sv-pixel-en; }
   &__lv {
     margin-left: auto;
-    font-family: $sv-pixel-en;
-    font-size: 12px;
+    font-family: $sv-pixel-num;
+    font-size: 18px;
     font-weight: 700;
     color: $sv-stat-gold;
   }
@@ -420,8 +422,8 @@ body.rpg-home-active .page  { padding: 0; float: none; width: 100%; }
     }
   }
   &__date {
-    font-family: $sv-pixel-en;
-    font-size: 12px;
+    font-family: $sv-pixel-num;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.06em;
     color: $sv-wood-dk;
